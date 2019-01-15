@@ -10,4 +10,10 @@ public class DummyClass {
             System.out.println("number is: " + numbers[i]);
         }
     }
+
+    public void printsCharArray(char[] characters) {
+        for (int i = 0; i < characters.length; i++) {
+            System.out.println("character is: " + characters[i]);
+        }
+    }
 }
