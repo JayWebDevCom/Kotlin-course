@@ -2,26 +2,29 @@ package com
 
 fun main(args: Array<String>) {
 
-    val emp = Employee()
+    val emp = Employee("John")
+    println(emp.name)
+    println(emp.fullTime) // intellij predicted
 
+    val emp2 = Employee("Jane", false)
+    println(emp2.name)
+    println(emp2.fullTime)
 
-/*
-private, public, protected, internal
+    val demo = Demo()
+    println(demo.name)
 
-functions and properties can be defined at top level
-public by default - java is package private by default
+    emp.fullTime = false
+    println(emp.fullTime)
 
-with private entire file can access it
-no matching requirement for class name and file name
+    emp.setLocationAsSite()
 
-module - group of files compiled together
-internal - visible inside the module
+    var p = emp.getDes()
+    println(p)
 
-internal compiled to public
-private compiled to package private
-*/
+    emp.designation = "quarry"
+    println(emp.designation)
 
-
+    println()
+    println(MY_CONSTANT)
+    println(demo.MY_CONSTANT)
 }
-
-private class Employee
