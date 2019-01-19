@@ -13,6 +13,8 @@ default setters and getters are generated - apply to fields directly
 can't be done from outside the class
 
 changing the value of a property directly uses a setter behind the scenes
+
+default return type from a member functionis always unit
 */
 
 class Employee(
@@ -22,23 +24,16 @@ class Employee(
         designation: String = "ok") {
 
     var designation = designation
+        get() {
+            println("running the custom get()")
+            return field
+        }
+        set(value) {
+            println("running the custom set()")
+            field = value
+        }
 
-    get() {
-        println("running the custom get()")
-        return field
-    }
+    // actually returns the uppercase verion
+    fun upperCaseFirstName() = name.toUpperCase()
 
-    set(value) {
-        println("running the custom set()")
-        field = value
-    }
-
-    fun getDes(): String {
-        return designation
-    }
-
-    fun setLocationAsSite() {
-        location = "SITE"
-        println(location)
-    }
 }
