@@ -1,15 +1,23 @@
 package com
 
-import utils.upperFirstAndLast
-
-/*
-String is receiver type
-String is the receiver object
-*/
+import com.electronics.LaserPrinter
+import com.electronics.SomethingElse
+import com.electronics.SpecialLaserPrinter
 
 fun main(args: Array<String>) {
 
-    val upperFirstAndLast = "this is my template string".upperFirstAndLast()
-    println(upperFirstAndLast)
+    val laser = LaserPrinter("Xerox 101", 200)
 
+    laser.printModel()
+    println(laser.bestSellingPrice())
+
+    val specialLaser = SpecialLaserPrinter("Xerox 109", 300)
+
+    specialLaser.printModel()
+    println(specialLaser.bestSellingPrice())
+
+    println()
+
+    // parent ctor runs before subclass ctor
+    SomethingElse("Some other parameter", 4321)
 }
