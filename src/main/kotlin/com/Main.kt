@@ -3,6 +3,7 @@ package com
 import com.electronics.LaserPrinter
 import com.electronics.SomethingElse
 import com.electronics.SpecialLaserPrinter
+import com.electronics.SomeClass
 
 fun main(args: Array<String>) {
 
@@ -20,4 +21,8 @@ fun main(args: Array<String>) {
 
     // parent ctor runs before subclass ctor
     SomethingElse("Some other parameter", 4321)
+
+    println("Interfaces")
+
+    SomeClass().name("some string")
 }
