@@ -1,28 +1,44 @@
 package com
 
-import com.electronics.LaserPrinter
-import com.electronics.SomethingElse
-import com.electronics.SpecialLaserPrinter
-import com.electronics.SomeClass
+/*
+keyword 'object'
+Object declarations declares and creates an instance at the same time so no constructors
 
+in kotlin always need an instance of the class to access members of that class or use a companion object
+
+companion objects inside classes can be accessed without an instance of the class
+equivalent of static
+
+companion objects can be named - companion object SomeCompanion { // }
+can be used to call private constructors
+ */
 fun main(args: Array<String>) {
 
-    val laser = LaserPrinter("Xerox 101", 200)
+    println(CompanyCommunications.getTagLine())
+    println(CompanyCommunications.getCopyrightLine())
 
-    laser.printModel()
-    println(laser.bestSellingPrice())
+    // from companion object
+    println(SomeClass.accessPrivateVar())
 
-    val specialLaser = SpecialLaserPrinter("Xerox 109", 300)
-
-    specialLaser.printModel()
-    println(specialLaser.bestSellingPrice())
+    val upperOrLowerTrue = SomeClass.upperOrLower("this is true", true)
+    val upperOrLowerFalse = SomeClass.upperOrLower("this is false", false)
+    val justAssign = SomeClass.justAssign("aNyThInG")
 
     println()
+    println(upperOrLowerTrue.someString)
+    println(upperOrLowerFalse.someString)
+    println(justAssign.someString)
 
-    // parent ctor runs before subclass ctor
-    SomethingElse("Some other parameter", 4321)
+    val multiplier = 20
 
-    println("Interfaces")
+    // object expression to implement SomeInterface - anonymous instance
+    acceptsInterface(object : SomeInterface {
+        override fun mustImplement(num: Int): String {
+            return "This is from the implementation: ${multiplier * num}"
+        }
+    })
+}
 
-    SomeClass().name("some string")
+fun acceptsInterface(someInterface: SomeInterface) {
+    println("from #acceptsInterface ${someInterface.mustImplement(543)}")
 }
