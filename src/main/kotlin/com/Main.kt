@@ -1,6 +1,12 @@
 package com
 
+import anothercom.topLevel
+
 fun main(args: Array<String>) {
-    println(Department.ACCOUNTING.fullName)
-    println(Department.IT.departmentInfo())
+    // 'internal' access modifier - visible within same module
+    // 'private' access modifier - visible within same file
+
+    // import from another module AnotherModule
+    // file - module settings, dependencies, +
+    println(topLevel("in the kotlinlearning module"))
 }
