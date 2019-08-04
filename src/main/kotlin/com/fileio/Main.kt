@@ -35,7 +35,7 @@ fun main(args: Array<String>) {
         println(it)
     }
 
-    val reduce: String = lines.reduce { r, s -> "$r $s"}
+    val reduce: String = lines.reduce { r, s -> "$r $s" }
     println("Reduced: $reduce")
     println()
 
@@ -92,4 +92,28 @@ fun main(args: Array<String>) {
             println(line)
         }
     }
+    println()
+
+    // walking the file tree
+
+    val file = File(".") // start at current directory
+
+    val keywords = arrayListOf("git", "idea", "target")
+    var myFilter: (File) -> Boolean = { keywords.stream().anyMatch { k -> it.path.contains(k) } }
+
+    println("walking top down...")
+    file.walkTopDown() // directories are visited before the files
+            .filterNot { myFilter.invoke(it) }
+            .forEach {
+                println(it)
+            }
+    println()
+
+    println("walking bottom up")
+    file.walkBottomUp()
+            .filterNot { myFilter.invoke(it) }
+            .forEach {
+                println(it)
+            }
+
 }
